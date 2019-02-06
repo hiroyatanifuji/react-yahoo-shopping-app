@@ -13,14 +13,14 @@ export default class Ranking extends React.Component {
 //  }
 
   renderItem = () => {
-    if (this.props.error) {
+    if (error) {
       return <p>error</p>;
-    } else if (typeof this.props.ranking === "undefined") {
+    } else if (typeof ranking === "undefined") {
       return <p>loading</p>
     } else {
       return (
         <ol>
-          {this.props.ranking.map(item => (
+          {ranking.map(item => (
             <li key={`ranking-item-${item.code}`}>
               <img alt={item.name} src={item.imageUrl} />
               <a href={item.url} target="_blank">{item.name}</a>
@@ -33,7 +33,7 @@ export default class Ranking extends React.Component {
 
 
   render() {
-    const { category } = this.props;
+    const { category, ranking, error } = this.props;
 
     return (
       <div>
@@ -42,7 +42,25 @@ export default class Ranking extends React.Component {
             ? `${category.name}のランキング`
             : ""
         }</h2>
-        {this.renderItem()}
+
+        {(() => {
+          if (error) {
+            return <p>error</p>;
+          } else if (typeof ranking === "undefined") {
+            return <p>loading</p>
+          } else {
+            return (
+              <ol>
+                {ranking.map(item => (
+                  <li key={`ranking-item-${item.code}`}>
+                    <img alt={item.name} src={item.imageUrl} />
+                    <a href={item.url} target="_blank">{item.name}</a>
+                  </li>
+                ))}
+              </ol>
+            );
+          }
+        })()}
       </div>
     );
   }

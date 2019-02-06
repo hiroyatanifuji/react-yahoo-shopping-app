@@ -9,12 +9,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onMount(categoryId) {
-    dispatch(actions.fetchRanking(categoryId));
-  },
-  onUpdate(categoryId) {
-    dispatch(actions.fetchRanking(categoryId));
-  }
+  onMount: (categoryId) => dispatch(actions.fetchRanking(categoryId)),
+  onUpdate: (categoryId) => dispatch(actions.fetchRanking(categoryId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Ranking);
