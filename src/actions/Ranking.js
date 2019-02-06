@@ -2,8 +2,8 @@ import fetchJsonp from "fetch-jsonp";
 import qs from "qs";
 import { replace } from "react-router-redux";
 
-const API_URL = "https://shopping.yahooapis.jp/ShoppingWebService/V1/json/categoryRanking";
-const APP_ID = "dj00aiZpPUJ6V0NPZzZHTjFmNCZzPWNvbnN1bWVyc2VjcmV0Jng9ZjQ-";
+const API_URL = "API_URL";
+const APP_ID = "APP_ID";
 
 const startRequest = category => ({
   type: "START_REQUEST",
